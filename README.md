@@ -15,6 +15,10 @@ Para a resolução do problema suposto, foi criado o **Result Combinator Service
 
 ## Instruções de uso
 
+### Docker
+
+
+
 ### Clone o repositório:
 - Abra um terminal e execute o seguinte comando para clonar o repositório:
 	```bash
