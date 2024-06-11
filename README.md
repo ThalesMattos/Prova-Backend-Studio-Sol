@@ -26,7 +26,7 @@ Nesta aplicação foram necessárias apenas 3 camadas:
 ### Service
 É aqui que a mágica de verdade acontece, no `CalcularCombinacoesService` é implementada toda a lógica direcionada a resolver o problema proposto.
 
-Depois de horas e mais horas de pesquisas para descobrir qual a maneira mais eficiente de resolver o problema proposto, chaguei a conglusão de que utilizar os princípios da programação dinâmica seria o ideal para implementar minha solução.
+Depois de horas e horas de pesquisas para descobrir qual a maneira mais eficiente de resolver o problema proposto, chaguei a conglusão de que utilizar os princípios da programação dinâmica seria o ideal para implementar minha solução.
 
 Resumidamente, a programação dinâmica se consiste em quebrar o problema em subproblemas mais simples e a utilização de memória para armazenar e reutilizar soluções já calculadas.
 
