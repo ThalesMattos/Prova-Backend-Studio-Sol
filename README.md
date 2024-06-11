@@ -48,10 +48,12 @@ Resumidamente, a programação dinâmica se consiste em quebrar o problema em su
 	"score": "`pontuação que desejar`x`pontuação que desejar`"
 }
 ```
+![image](https://github.com/ThalesMattos/Prova-Backend-Studio-Sol/assets/103903195/e47b587d-01a2-41d8-a2dd-220bcc8e1a0f)
+- Pronto! Ao lado você receberá o número de combinações referente ao placar inserido.
+
 ## Links
 
 Estes são alguns links de sites/documentações que me auxiliaram na criação do Result Combinator Service:
 
 - https://gurselgazii.medium.com/dockerizing-your-maven-spring-boot-application-a-step-by-step-guide-e267c2d9e8e1
 - https://www.geeksforgeeks.org/dynamic-programming/
-- 
