@@ -1,6 +1,6 @@
 package br.com.thalesmattos.resultcombinatorservice.controllers;
 
-import br.com.thalesmattos.resultcombinatorservice.dtos.Score;
+import br.com.thalesmattos.resultcombinatorservice.dtos.ScoreRecordDto;
 import br.com.thalesmattos.resultcombinatorservice.services.CalcularCombinacoesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ public class CombinacoesController {
     private final CalcularCombinacoesService calcularCombinacoesService;
 
     @PostMapping
-    public ResponseEntity<Integer> calcularCombinacoes(@RequestBody Score score){
+    public ResponseEntity<Integer> calcularCombinacoes(@RequestBody ScoreRecordDto score){
         var combinacoes = calcularCombinacoesService.calcularCombinacoes(score);
         return ResponseEntity
                 .status(HttpStatus.OK)

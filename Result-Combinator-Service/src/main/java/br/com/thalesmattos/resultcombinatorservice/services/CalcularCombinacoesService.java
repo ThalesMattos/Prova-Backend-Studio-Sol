@@ -1,6 +1,6 @@
 package br.com.thalesmattos.resultcombinatorservice.services;
 
-import br.com.thalesmattos.resultcombinatorservice.dtos.Score;
+import br.com.thalesmattos.resultcombinatorservice.dtos.ScoreRecordDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 public class CalcularCombinacoesService {
     private static final int[] SCORES = {3, 6, 7, 8};
 
-    public int calcularCombinacoes(Score score) {
+    public int calcularCombinacoes(ScoreRecordDto score) {
         var placar = conversaoPlacarParaInteiro(score.score());
         if (combinacaoIgualAZero(placar) == true) {
             return 0;
@@ -22,7 +22,7 @@ public class CalcularCombinacoesService {
 
                 for (int pontuacaoFixa : SCORES) {
                     for (int i = pontuacaoFixa; i <= pontuacaoDoTime; i++) {
-                        combinacoes[i] += combinacoes[i - pontuacaoDoTime];
+                        combinacoes[i] += combinacoes[i - pontuacaoFixa];
                     }
                 }
                 combinacoesTimes.add(combinacoes[pontuacaoDoTime]);
