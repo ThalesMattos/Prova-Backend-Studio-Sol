@@ -84,7 +84,7 @@ Existem 4 casos em que o numero de combinações é igual a 0, quando o placar d
 
 Então é preciso chamar o método `combinacaoIgualAZero`, que justamente verifica se algum dos dois placares se encaixam nos 4 casos citados acima. Se algum dos casos acima ocorrerem, é retornado imediatamente uma **Resposta HTTP** contendo o número de combinações igual a 0.
 
-![image](https://github.com/ThalesMattos/Prova-Backend-Studio-Sol/assets/103903195/c990e04c-41c6-4e8a-995d-172bf94fe88c)
+![image](https://github.com/ThalesMattos/Prova-Backend-Studio-Sol/assets/103903195/054b689e-61f1-458b-a194-c54eb1e002db)
 
 Se o método `combinacaoIgualAZero` retornar `false`, ou seja, o placar não se enquadrou em um dos 4 casos acima, significa que o placar pode gerar um número de combinações diferente de 0 e será aplicada a lógica para calcular o numero maximo de combunações.
 
