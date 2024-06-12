@@ -14,10 +14,8 @@ Para a resolução do problema suposto, foi criado o **Result Combinator Service
 - **Docker**
 
 ## Instruções de uso
-
 ### Docker
-
-
+- Certifique-se de ter o **Docker** instalado em sua máquina, caso não tenha, aqui está o link para a instalação https://www.docker.com/products/docker-desktop/
 
 ### Clone o repositório:
 - Abra um terminal e execute o seguinte comando para clonar o repositório:
@@ -25,7 +23,22 @@ Para a resolução do problema suposto, foi criado o **Result Combinator Service
 	git clone https://github.com/ThalesMattos/Prova-Backend-Studio-Sol.git
 	```
 - Alternativamente, você pode fazer download do projeto na página deste repositório no GitHub. Para isso, clique em `Code > Download ZIP`
-- Rode a aplicação
+- No terminal da sua IDE, execute o seguinte comando:
+```bash
+ls target/*.jar
+```
+- Caso o comando acima não encontre um arquivo **.jar**, execute o comando abaixo:
+```bash
+mvn package
+```
+- Se o `ls target/*.jar` encontrou um arquivo **.jar** ou o `mvn package` criou com sucesso um arquivo **.jar**, execute os comandos abaixo na ordem que se encontram:
+```bash
+docker build -t spring-boot-app .
+```
+- Em caso de erro no comando acima referente 
+```bash
+docker run -p 8080:8080 spring-boot-app
+```
 
 ### Cliente HTTPS
 
