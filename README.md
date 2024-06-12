@@ -85,7 +85,7 @@ Então é preciso chamar o método `combinacaoIgualAZero`, que justamente verifi
 
 ![image](https://github.com/ThalesMattos/Prova-Backend-Studio-Sol/assets/103903195/c990e04c-41c6-4e8a-995d-172bf94fe88c)
 
-
+Se o método `combinacaoIgualAZero` retornar `false`, ou seja, o placar não se enquadrou em um dos 4 casos acima, 
 
 Depois de horas e horas de pesquisas para descobrir qual a maneira mais eficiente de resolver o problema proposto, chaguei a conglusão de que utilizar os princípios da programação dinâmica seria o ideal para implementar minha solução.
 
