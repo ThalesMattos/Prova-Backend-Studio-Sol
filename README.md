@@ -73,6 +73,20 @@ Nesta aplicação foram necessárias apenas 3 camadas:
 ### Service
 É aqui que a mágica de verdade acontece, no `CalcularCombinacoesService` é implementada toda a lógica direcionada a resolver o problema proposto.
 
+Inicialmente, é necessário converter a String recebida por parâmetro (`3x15` por exemplo) para dois inteiros(`3` e `15`), a respectiva pontuação de cada time. E para isto, chamamos o método `conversaoPlacarParaInteiro`:
+
+![image](https://github.com/ThalesMattos/Prova-Backend-Studio-Sol/assets/103903195/e791482c-d256-4e99-87b7-b79ca299d51b)
+
+Existem 4 casos em que o numero de combinações é igual a 0, quando o placar de algum time é igual a 1, 2, 4 e 5. Pois não há maneira de marcar estas pontuações, afinal, só é possível fazer:
+- Touchdown: 6 pontos
+- Extra touchdown: 0, 1 ou 2 pontos (só pode ser marcado após um touchdown)
+- Field goal: 3 pontos
+Então é preciso chamar o método `combinacaoIgualAZero`, que justamente verifica se algum dos dois placares se encaixam nos 4 casos citados acima. Se algum dos casos acima ocorrerem, é retornado imediatamente uma **Resposta HTTP** contendo o número de combinações igual a 0.
+
+![image](https://github.com/ThalesMattos/Prova-Backend-Studio-Sol/assets/103903195/c990e04c-41c6-4e8a-995d-172bf94fe88c)
+
+
+
 Depois de horas e horas de pesquisas para descobrir qual a maneira mais eficiente de resolver o problema proposto, chaguei a conglusão de que utilizar os princípios da programação dinâmica seria o ideal para implementar minha solução.
 
 Resumidamente, a programação dinâmica se consiste em quebrar o problema em subproblemas mais simples e a utilização de memória para armazenar e reutilizar soluções já calculadas.
