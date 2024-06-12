@@ -15,7 +15,7 @@ public class CalcularCombinacoesService {
         if (combinacaoIgualAZero(placar) == true) {
             return 0;
         } else {
-            List<Integer> combinacoesTimes = new ArrayList<>();
+            List<Integer> combinacoesDeCadaTime = new ArrayList<>();
             for(int pontuacaoDoTime : placar) {
                 var combinacoes = new int[pontuacaoDoTime + 1];
                 combinacoes[0] = 1;
@@ -25,12 +25,12 @@ public class CalcularCombinacoesService {
                         combinacoes[i] += combinacoes[i - pontuacaoFixa];
                     }
                 }
-                combinacoesTimes.add(combinacoes[pontuacaoDoTime]);
+                combinacoesDeCadaTime.add(combinacoes[pontuacaoDoTime]);
             }
-            if (combinacoesTimes.get(0) > combinacoesTimes.get(1)){
-                return combinacoesTimes.get(0);
-            } else {
-                return combinacoesTimes.get(1);
+            if (combinacoesDeCadaTime.get(0) > combinacoesDeCadaTime.get(1)){
+                return combinacoesDeCadaTime.get(0);
+            } else{
+                return combinacoesDeCadaTime.get(1);
             }
         }
     }
