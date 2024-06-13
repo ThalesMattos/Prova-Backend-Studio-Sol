@@ -61,7 +61,7 @@ docker run -p 8080:8080 spring-boot-app
 ![image](https://github.com/ThalesMattos/Prova-Backend-Studio-Sol/assets/103903195/e47b587d-01a2-41d8-a2dd-220bcc8e1a0f)
 - Pronto! Ao lado você receberá o **número de combinações** referente ao placar inserido.
 
-## Lógica aplicada no código
+## Fragmentando o código
 
 Nesta aplicação foram necessárias apenas 3 camadas:
 - **Controller**
@@ -81,15 +81,30 @@ Existem 4 casos em que o numero de combinações é igual a 0, quando o placar d
 - Touchdown: 6 pontos
 - Extra touchdown: 0, 1 ou 2 pontos (só pode ser marcado após um touchdown)
 - Field goal: 3 pontos
+
 Então é preciso chamar o método `combinacaoIgualAZero`, que justamente verifica se algum dos dois placares se encaixam nos 4 casos citados acima. Se algum dos casos acima ocorrerem, é retornado imediatamente uma **Resposta HTTP** contendo o número de combinações igual a 0.
 
-![image](https://github.com/ThalesMattos/Prova-Backend-Studio-Sol/assets/103903195/c990e04c-41c6-4e8a-995d-172bf94fe88c)
+![image](https://github.com/ThalesMattos/Prova-Backend-Studio-Sol/assets/103903195/054b689e-61f1-458b-a194-c54eb1e002db)
 
-Se o método `combinacaoIgualAZero` retornar `false`, ou seja, o placar não se enquadrou em um dos 4 casos acima, 
+Se o método `combinacaoIgualAZero` retornar `false`, ou seja, o placar não se enquadrou em um dos 4 casos acima, significa que o placar pode gerar um número de combinações diferente de 0 e será aplicada a lógica para calcular o numero maximo de combunações.
 
-Depois de horas e horas de pesquisas para descobrir qual a maneira mais eficiente de resolver o problema proposto, chaguei a conglusão de que utilizar os princípios da programação dinâmica seria o ideal para implementar minha solução.
+Depois de horas e horas de pesquisas para descobrir qual a maneira mais eficiente de resolver o problema proposto, chaguei a conclusão de que utilizar os princípios da programação dinâmica seria o ideal para implementar minha solução.
 
 Resumidamente, a programação dinâmica se consiste em quebrar o problema em subproblemas mais simples e a utilização de memória para armazenar e reutilizar soluções já calculadas.
+
+Suponha que estamos tentando calcular as combinações para uma `pontuacaoDoTime` de 10.
+
+Inicialmente, o array combinacoes é inicializado com zeros, exceto `combinacoes[0]` que é definido como 1, pois há uma única maneira de marcar 0 pontos (não marcando nenhum ponto).
+
+Agora, vamos considerar a primeira pontuacaoFixa em SCORES, que é 3. Para cada pontuação i de 3 a 10 (a pontuacaoDoTime), atualizamos `combinacoes[i]` adicionando `combinacoes[i - pontuacaoFixa]`. Isso significa que estamos adicionando o número de maneiras de marcar `i - 3` pontos ao número de maneiras de marcar `i` pontos.
+
+Por exemplo, quando `i` é 5, `combinacoes[5]` é atualizado para `combinacoes[5] + combinacoes[5 - 3]` (ou seja, `combinacoes[5] + combinacoes[2]`). Isso significa que estamos adicionando o número de maneiras de marcar 2 pontos ao número de maneiras de marcar 5 pontos. Isso ocorre porque podemos marcar 5 pontos marcando 2 pontos e depois marcando 3 pontos (a `pontuacaoFixa`).
+
+Esse processo é repetido para cada pontuacaoFixa em `SCORES`. No final, `combinacoes[pontuacaoDoTime]` dará o número total de maneiras de marcar `pontuacaoDoTime` pontos usando as pontuações em `SCORES`.
+
+Após o calculo de combinações dos dois placares, é retornado o que tiver o maior número de combinações.
+
+![image](https://github.com/ThalesMattos/Prova-Backend-Studio-Sol/assets/103903195/435e6a21-f8d6-4abf-bf04-1a78e766460b)
 
 ### Controller
 O `CombinacoesController` fica responsavel por receber uma **Requisição HTTP** através do `ScoreRecordDto`, ou seja, ele recebe um placar e o manda por parâmetro para o `CalcularCombinacoesService` calcular o máximo de combinações e retorna para o `CombinacoesController` que logo em seguida retorna através uma **Response Entity** (uma resposta HTTP) o número de combinações.
