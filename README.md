@@ -90,13 +90,13 @@ Se o método `combinacaoIgualAZero` retornar `false`, ou seja, o placar não se 
 
 Depois de horas e horas de pesquisas para descobrir qual a maneira mais eficiente de resolver o problema proposto, chaguei a conclusão de que utilizar os princípios da programação dinâmica seria o ideal para implementar minha solução.
 
-Resumidamente, a programação dinâmica se consiste em quebrar o problema em subproblemas mais simples e a utilização de memória para armazenar e reutilizar soluções já calculadas.
+Em resumo, minha solução usa programação dinâmica para calcular o número de combinações possíveis de pontuações que podem levar a uma determinada pontuação. Ela faz isso construindo progressivamente a solução, começando de 0 e indo até a pontuação desejada.
 
 Suponha que estamos tentando calcular as combinações para uma `pontuacaoDoTime` de 10.
 
 Inicialmente, o array combinacoes é inicializado com zeros, exceto `combinacoes[0]` que é definido como 1, pois há uma única maneira de marcar 0 pontos (não marcando nenhum ponto).
 
-Agora, vamos considerar a primeira pontuacaoFixa em SCORES, que é 3. Para cada pontuação i de 3 a 10 (a pontuacaoDoTime), atualizamos `combinacoes[i]` adicionando `combinacoes[i - pontuacaoFixa]`. Isso significa que estamos adicionando o número de maneiras de marcar `i - 3` pontos ao número de maneiras de marcar `i` pontos.
+Agora, vamos considerar a primeira pontuacaoFixa em SCORES, que é 3. Para cada pontuação i de 3 a 10 (a `pontuacaoDoTime`), atualizamos `combinacoes[i]` adicionando `combinacoes[i - pontuacaoFixa]`. Isso significa que estamos adicionando o número de maneiras de marcar `i - 3` pontos ao número de maneiras de marcar `i` pontos.
 
 Por exemplo, quando `i` é 5, `combinacoes[5]` é atualizado para `combinacoes[5] + combinacoes[5 - 3]` (ou seja, `combinacoes[5] + combinacoes[2]`). Isso significa que estamos adicionando o número de maneiras de marcar 2 pontos ao número de maneiras de marcar 5 pontos. Isso ocorre porque podemos marcar 5 pontos marcando 2 pontos e depois marcando 3 pontos (a `pontuacaoFixa`).
 
