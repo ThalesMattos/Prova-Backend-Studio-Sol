@@ -1,5 +1,6 @@
 package br.com.thalesmattos.resultcombinatorservice.controllers;
 
+import br.com.thalesmattos.resultcombinatorservice.dtos.CombinationsRecordDto;
 import br.com.thalesmattos.resultcombinatorservice.dtos.ScoreRecordDto;
 import br.com.thalesmattos.resultcombinatorservice.services.CalcularCombinacoesService;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,9 @@ public class CombinacoesController {
     private final CalcularCombinacoesService calcularCombinacoesService;
 
     @PostMapping
-    public ResponseEntity<Integer> calcularCombinacoes(@RequestBody ScoreRecordDto score){
-        var combinacoes = calcularCombinacoesService.calcularCombinacoes(score);
+    public ResponseEntity<CombinationsRecordDto> calcularCombinacoes(@RequestBody ScoreRecordDto score){
+        var numeroMaximoDeCombinacors = calcularCombinacoesService.calcularCombinacoes(score);
+        CombinationsRecordDto combinacoes = new CombinationsRecordDto(numeroMaximoDeCombinacors);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(combinacoes);

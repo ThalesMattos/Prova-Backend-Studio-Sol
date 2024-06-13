@@ -8,6 +8,7 @@ import java.util.*;
 @Service
 public class CalcularCombinacoesService {
     private static final int[] SCORES = {3, 6, 7, 8};
+    private static final Set<Integer> PLACARES_INVALIDOS = Set.of(1, 2, 4, 5);
 
     public int calcularCombinacoes(ScoreRecordDto score) {
         var placar = conversaoPlacarParaInteiro(score.score());
@@ -37,9 +38,8 @@ public class CalcularCombinacoesService {
     }
 
     private boolean combinacaoIgualAZero(int[] placares) {
-        Set<Integer> placaresInvalidos = new HashSet<>(Arrays.asList(1, 2, 4, 5));
         for (var placar : placares) {
-            if (placaresInvalidos.contains(placar)) {
+            if (PLACARES_INVALIDOS.contains(placar)) {
                 return true;
             }
         }
