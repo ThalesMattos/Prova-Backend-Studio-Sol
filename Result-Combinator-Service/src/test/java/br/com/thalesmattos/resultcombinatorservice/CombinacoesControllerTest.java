@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -24,6 +26,6 @@ public class CombinacoesControllerTest {
 
         // Assert
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(4, response.getBody().combinations());
+        assertEquals(4, Objects.requireNonNull(response.getBody()).combinations());
     }
 }
