@@ -21,7 +21,7 @@ public class CalcularCombinacoesServiceTest {
 
     @Test
     public void testCalcularCombinacoes() {
-        ScoreRecordDto score = new ScoreRecordDto("48x100"); //
+        ScoreRecordDto score = new ScoreRecordDto("48x100");
 
         int combinacoesEsperadas = 230;
 
